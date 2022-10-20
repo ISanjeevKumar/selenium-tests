@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BrowserManager {
 
-    public static WebDriver getWebDriver(ExecutionType executionType, BrowserType browserType) throws Exception {
+    public WebDriver getWebDriver(ExecutionType executionType, BrowserType browserType) throws Exception {
         switch (executionType) {
             case Local:
                 return createLocalWebDriverDriver(browserType);
@@ -21,7 +21,7 @@ public class BrowserManager {
     }
 
 
-    private static WebDriver createLocalWebDriverDriver(BrowserType browserType) throws Exception {
+    private WebDriver createLocalWebDriverDriver(BrowserType browserType) throws Exception {
         try {
             switch (browserType) {
                 case CHROME:
@@ -46,7 +46,7 @@ public class BrowserManager {
         }
     }
 
-    private static WebDriver createRemoteWebDriver() {
+    private WebDriver createRemoteWebDriver() {
         try {
             return null;
         } catch (Exception ex) {

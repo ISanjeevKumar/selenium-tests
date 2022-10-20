@@ -10,11 +10,11 @@ public class HerokuApp {
     private WebDriver driver;
     private DropdownPage _dropdownPage;
     public HerokuApp(BrowserType browserType) throws Exception {
-     driver = BrowserManager.getWebDriver(ExecutionType.Local, browserType);
+     driver = new BrowserManager().getWebDriver(ExecutionType.Local, browserType);
     }
 
     public HerokuApp(ExecutionType executionType, BrowserType browserType) throws Exception {
-        driver = BrowserManager.getWebDriver(executionType, browserType);
+        driver = new BrowserManager().getWebDriver(executionType, browserType);
     }
 
     public DropdownPage dropdownPage(){
