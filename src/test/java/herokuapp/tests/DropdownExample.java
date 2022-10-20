@@ -7,6 +7,6 @@ public class DropdownExample extends TestBase {
     @Test
     public void shouldBeAbleToSelectOption() {
         app.dropdownPage().visit();
-        app.dropdownPage().selectOption("Option 1");
+        app.dropdownPage().selectOption("2");
     }
 }
