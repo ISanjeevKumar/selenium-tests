@@ -1,4 +1,4 @@
-##Selenium 4.0 Sample Tests
+## Selenium 4.0 Sample Tests
 - This framework has test examples with Selenium 4 features.
 - Also, Followed the SOLID and DRY principles 
 - Data driven test using TestNG
