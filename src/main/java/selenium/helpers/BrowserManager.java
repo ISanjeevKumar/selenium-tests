@@ -25,10 +25,9 @@ public class BrowserManager {
         try {
             switch (browserType) {
                 case CHROME:
-                    System.out.println("Starting Chrome Browser");
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
-                    //options.addArguments("headless");
+                    options.addArguments("headless");
                     options.addArguments("window-size=1200x600");
                     return new ChromeDriver(options);
                 case EDGE:
