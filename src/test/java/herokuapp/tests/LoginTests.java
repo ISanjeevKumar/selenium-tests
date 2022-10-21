@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class LoginTests extends TestBase {
 
     @Test
-    public void shouldBeAbleToLogin() throws InterruptedException {
+    public void shouldBeAbleToLogin() {
         app.loginPage().navigateTo();
         app.loginPage().enterUsername("tomsmith");
         app.loginPage().enterPassword("SuperSecretPassword!");

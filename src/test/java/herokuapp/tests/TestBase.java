@@ -5,6 +5,8 @@ import herokuapp.pageobjects.HerokuApp;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class TestBase {
     protected HerokuApp app;
 
@@ -16,5 +18,13 @@ public class TestBase {
     @AfterTest
     public void testCleanUp() {
         app.dispose();
+    }
+
+    public void assertEqual (String expected, String actual){
+        assertThat(expected).isEqualTo(actual);
+    }
+
+    public void assertContains (String expected, String actual){
+        assertThat(actual).contains(expected);
     }
 }
