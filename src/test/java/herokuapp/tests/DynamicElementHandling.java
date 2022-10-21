@@ -1,7 +1,8 @@
 package herokuapp.tests;
 
-import org.testng.Assert;
+
 import org.testng.annotations.Test;
+import static org.assertj.core.api.Assertions.*;
 
 public class DynamicElementHandling extends TestBase{
 
@@ -10,6 +11,6 @@ public class DynamicElementHandling extends TestBase{
         app.dynamicLoadingPage().visit();
         app.dynamicLoadingPage().navigateToExampleOne();
         String pageContent = app.dynamicLoadingPage().getPageContent();
-        Assert.assertEquals(pageContent,"Hello World!");
+        assertThat(pageContent).isEqualTo("Hello World!");
     }
 }

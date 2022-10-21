@@ -1,8 +1,13 @@
 ## Selenium 4.0 Sample Tests
-- This framework has test examples with Selenium 4 features.
-- Also, Followed the SOLID and DRY principles 
-- Data driven test using TestNG
-- Written wrapper methods for Selenium 4.0
+
+The automation framework has sample tests that use Selenium 4.0 and Page object model design pattern.
 
 ### Websites used for testing:
-- https://the-internet.herokuapp.com/dropdown
+- https://the-internet.herokuapp.com
+### Project Dependencies
+- org.assertj 
+- webdrivermanager
+- org.testng 
+- org.seleniumhq.selenium 
+
+
