@@ -4,11 +4,15 @@ import common.enums.BrowserType;
 import common.enums.ExecutionType;
 import common.modelObjects.RunSettings;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
-import java.util.Locale;
 
 public class BrowserManager {
 
@@ -28,7 +32,7 @@ public class BrowserManager {
             case REMOTE_WEBDRIVER:
                 return createRemoteWebDriver();
             default:
-                throw new Exception("Invalid Execution Type");
+                throw new NotFoundException("ExecutionType NOT FOUND.");
         }
     }
 
@@ -41,13 +45,20 @@ public class BrowserManager {
                     ChromeOptions options = new ChromeOptions();
                     if (_runSettings.headless) options.addArguments("headless");
                     options.addArguments("window-size=1200x600");
+                    options.addArguments("--disable-gpu");
                     return new ChromeDriver(options);
                 case EDGE:
-                    return null;
+                    WebDriverManager.edgedriver().setup();
+                    EdgeOptions edgeOptions = new EdgeOptions();
+                    if (_runSettings.headless) edgeOptions.addArguments("--headless");
+                    return new EdgeDriver(edgeOptions);
                 case FIREFOX:
-                    return null;
+                    WebDriverManager.firefoxdriver().setup();
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    if (_runSettings.headless) firefoxOptions.addArguments("--headless");
+                    return new FirefoxDriver(firefoxOptions);
                 default:
-                    throw new Exception("Invalid Browser Type");
+                    throw new NotFoundException("Browser Not Found. Please check Browser name.");
 
             }
 
