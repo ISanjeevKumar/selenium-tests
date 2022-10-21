@@ -17,6 +17,24 @@ In this automation framework , I have used layered Architecture and this framewo
 - Component Layer - Common library 
 - Data Layer - Test data 
 ### Page object model for Internet-herokuapp
+
+Test Layer 
+
+```java
+
+public class LoginTests extends TestBase {
+
+    @Test
+    public void shouldBeAbleToLogin() {
+        app.loginPage().navigateTo();
+        app.loginPage().enterUsername("tomsmith");
+        app.loginPage().enterPassword("SuperSecretPassword!");
+        app.loginPage().clickOnLoginButton();
+        assertContains("You logged into a secure area!", app.secureAreaPage().getFlashMessage());
+    }
+}
+```
+
 Page Class
 ```java
 public class LoginPage extends BasePage {
@@ -104,20 +122,4 @@ public class HerokuApp {
 }
 ```
 
-Test Layer 
-
-```java
-
-public class LoginTests extends TestBase {
-
-    @Test
-    public void shouldBeAbleToLogin() {
-        app.loginPage().navigateTo();
-        app.loginPage().enterUsername("tomsmith");
-        app.loginPage().enterPassword("SuperSecretPassword!");
-        app.loginPage().clickOnLoginButton();
-        assertContains("You logged into a secure area!", app.secureAreaPage().getFlashMessage());
-    }
-}
-```
 
