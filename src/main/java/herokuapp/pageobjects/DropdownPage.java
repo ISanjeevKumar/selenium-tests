@@ -1,5 +1,6 @@
 package herokuapp.pageobjects;
 
+import extentreport.config.ExtentLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,8 +10,8 @@ import selenium.helpers.WebElementFinder;
 
 public class DropdownPage extends BasePage {
 
-    public DropdownPage(WebDriver driver, String baseUrl) {
-        super(driver, baseUrl);
+    public DropdownPage(WebDriver driver, String baseUrl, ExtentLogger logger) {
+        super(driver, baseUrl, logger);
     }
 
     public void visit() {

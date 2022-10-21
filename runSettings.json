@@ -2,5 +2,9 @@
   "baseUrl": "https://the-internet.herokuapp.com",
   "headless": true,
   "browser": "chrome",
-  "executionType": "local"
+  "executionType": "local",
+  "extentReportSettings": {
+    "reportPath": "testReport/result.html",
+    "reportTitle": "HerokuApp Test Automation"
+  }
 }

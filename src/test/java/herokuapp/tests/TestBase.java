@@ -2,25 +2,35 @@ package herokuapp.tests;
 
 import common.components.JsonHelper;
 import common.modelObjects.RunSettings;
+import extentreport.config.ExtentLogger;
+import extentreport.config.ExtentReportManager;
 import herokuapp.pageobjects.HerokuApp;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestBase {
+    private ExtentReportManager _extentReportManager;
+    private ExtentLogger _extentLogger;
     protected HerokuApp app;
     protected RunSettings runSettings;
 
-    @BeforeTest
-    public void testInitialization() throws Exception {
+    @BeforeTest(alwaysRun = true)
+    public void testInitialization(ITestContext context) throws Exception {
         runSettings = JsonHelper.getRunSettings();
-        app = new HerokuApp(runSettings);
+        _extentReportManager = new ExtentReportManager(runSettings.extentReportSettings);
+        _extentReportManager.createTest(context.getName());
+        _extentLogger = new ExtentLogger(_extentReportManager.getTest());
+        app = new HerokuApp(runSettings, _extentLogger);
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void testCleanUp() {
         app.dispose();
+        _extentReportManager.flushReports();
     }
 
     public void assertEqual(String expected, String actual) {

@@ -1,5 +1,6 @@
 package herokuapp.pageobjects;
 
+import extentreport.config.ExtentLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,8 +22,8 @@ public class LoginPage extends BasePage {
         return WebElementFinder.getElement(driver, By.cssSelector("#login > button"), 30);
     }
 
-    public LoginPage(WebDriver driver, String baseUrl) {
-        super(driver, baseUrl);
+    public LoginPage(WebDriver driver, String baseUrl, ExtentLogger logger) {
+        super(driver, baseUrl, logger);
     }
 
     public void navigateTo() {

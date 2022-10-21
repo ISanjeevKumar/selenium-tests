@@ -1,5 +1,6 @@
 package herokuapp.pageobjects;
 
+import extentreport.config.ExtentLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,8 +12,8 @@ public class SecureAreaPage extends BasePage {
         return WebElementFinder.getElement(driver, By.id("flash-messages"), 30);
     }
 
-    public SecureAreaPage(WebDriver driver, String baseUrl) {
-        super(driver, baseUrl);
+    public SecureAreaPage(WebDriver driver, String baseUrl, ExtentLogger logger) {
+        super(driver, baseUrl, logger);
     }
 
     public String getFlashMessage() {
