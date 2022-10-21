@@ -1,5 +1,6 @@
 {
   "baseUrl": "https://the-internet.herokuapp.com",
   "headless": true,
-  "browser": "chrome"
+  "browser": "chrome",
+  "executionType": "local"
 }

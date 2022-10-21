@@ -18,11 +18,7 @@ public class HerokuApp {
 
     public HerokuApp(RunSettings runSettings) throws Exception {
         _baseUrl = runSettings.baseUrl;
-        _driver = new BrowserManager().getWebDriver(ExecutionType.Local, BrowserType.CHROME);
-    }
-
-    public HerokuApp(ExecutionType executionType, BrowserType browserType) throws Exception {
-        _driver = new BrowserManager().getWebDriver(executionType, browserType);
+        _driver = new BrowserManager(runSettings).getWebDriver();
     }
 
     public DropdownPage dropdownPage() {

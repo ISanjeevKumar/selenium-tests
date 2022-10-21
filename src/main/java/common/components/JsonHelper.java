@@ -9,12 +9,12 @@ import java.io.FileReader;
 
 public class JsonHelper {
 
-    public static RunSettings getRunSettings(){
+    public static RunSettings getRunSettings() {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("src/main/resources/runSettings.json"));
+            br = new BufferedReader(new FileReader("runSettings.json"));
             RunSettings targetObject = new Gson().fromJson(br, RunSettings.class);
-            return  targetObject;
+            return targetObject;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

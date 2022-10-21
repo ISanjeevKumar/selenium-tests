@@ -2,16 +2,28 @@ package selenium.helpers;
 
 import common.enums.BrowserType;
 import common.enums.ExecutionType;
+import common.modelObjects.RunSettings;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.Locale;
+
 public class BrowserManager {
 
-    public WebDriver getWebDriver(ExecutionType executionType, BrowserType browserType) throws Exception {
+    private RunSettings _runSettings;
+
+    public BrowserManager(RunSettings runSettings) {
+        this._runSettings = runSettings;
+    }
+
+    public WebDriver getWebDriver() throws Exception {
+        BrowserType browserType = BrowserType.valueOf(_runSettings.browser.toUpperCase());
+        ExecutionType executionType = ExecutionType.valueOf(_runSettings.executionType.toUpperCase());
+        System.out.println("Browser is:" + browserType);
         switch (executionType) {
-            case Local:
+            case LOCAL:
                 return createLocalWebDriverDriver(browserType);
             case REMOTE_WEBDRIVER:
                 return createRemoteWebDriver();
@@ -27,7 +39,7 @@ public class BrowserManager {
                 case CHROME:
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments("headless");
+                    if (_runSettings.headless) options.addArguments("headless");
                     options.addArguments("window-size=1200x600");
                     return new ChromeDriver(options);
                 case EDGE:
