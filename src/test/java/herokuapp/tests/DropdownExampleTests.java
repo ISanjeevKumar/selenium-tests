@@ -2,7 +2,7 @@ package herokuapp.tests;
 
 import org.testng.annotations.Test;
 
-public class DropdownExample extends TestBase {
+public class DropdownExampleTests extends TestBase {
 
     @Test
     public void shouldBeAbleToSelectOption() {
