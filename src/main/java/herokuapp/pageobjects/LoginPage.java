@@ -16,23 +16,25 @@ public class LoginPage extends BasePage {
     protected WebElement password() {
         return WebElementFinder.getElementByIdOrName(driver, "password", 30);
     }
+
     protected WebElement loginBtn() {
         return WebElementFinder.getElement(driver, By.cssSelector("#login > button"), 30);
     }
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(WebDriver driver, String baseUrl) {
+        super(driver, baseUrl);
     }
 
-    public void navigateTo(){
+    public void navigateTo() {
         try {
-            driver.get("https://the-internet.herokuapp.com/login");
+            driver.get(baseUrl + "/login");
             logSteps("Successfully navigateTo Login");
         } catch (Exception ex) {
             logError("Failed to navigateTo due to:" + ex.getMessage());
             throw ex;
         }
     }
+
     public void enterUsername(String username) {
         try {
             WebTextHelper.setText(username(), username);

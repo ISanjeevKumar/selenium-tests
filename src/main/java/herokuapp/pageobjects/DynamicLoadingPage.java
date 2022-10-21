@@ -5,36 +5,36 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import selenium.helpers.WebElementFinder;
 
-public class DynamicLoadingPage extends BasePage{
+public class DynamicLoadingPage extends BasePage {
 
-    public DynamicLoadingPage(WebDriver driver) {
-        super(driver);
+    public DynamicLoadingPage(WebDriver driver, String baseUrl) {
+        super(driver, baseUrl);
     }
 
-    public void visit(){
-        driver.get("https://the-internet.herokuapp.com/dynamic_loading");
+    public void visit() {
+        driver.get(baseUrl + "/dynamic_loading");
     }
 
-    public void navigateToExampleOne(){
+    public void navigateToExampleOne() {
         try {
-            WebElement exampleOneElement = WebElementFinder.getElement(driver, By.cssSelector("#content > div > a:nth-child(5)"),30);
+            WebElement exampleOneElement = WebElementFinder.getElement(driver, By.cssSelector("#content > div > a:nth-child(5)"), 30);
             exampleOneElement.click();
-            WebElement startElement = WebElementFinder.getElement(driver, By.cssSelector("#start > button"),30);
+            WebElement startElement = WebElementFinder.getElement(driver, By.cssSelector("#start > button"), 30);
             startElement.click();
             System.out.println("navigate To Example One");
-        } catch (Exception ex){
-            System.err.println("Failed  to navigate To Example One due to:"+ex.getMessage());
+        } catch (Exception ex) {
+            System.err.println("Failed  to navigate To Example One due to:" + ex.getMessage());
             throw ex;
         }
     }
 
 
-    public String getPageContent(){
+    public String getPageContent() {
         try {
-            WebElement pageContent = WebElementFinder.getElement(driver, By.cssSelector("div#finish"),30);
+            WebElement pageContent = WebElementFinder.getElement(driver, By.cssSelector("div#finish"), 30);
             return pageContent.getText().trim();
-        } catch (Exception ex){
-            System.err.println("Failed  to navigate To Example One due to:"+ex.getMessage());
+        } catch (Exception ex) {
+            System.err.println("Failed  to navigate To Example One due to:" + ex.getMessage());
             throw ex;
         }
     }

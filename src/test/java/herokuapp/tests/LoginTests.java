@@ -10,6 +10,6 @@ public class LoginTests extends TestBase {
         app.loginPage().enterUsername("tomsmith");
         app.loginPage().enterPassword("SuperSecretPassword!");
         app.loginPage().clickOnLoginButton();
-        assertContains("You logged into a secure area!",app.secureAreaPage().getFlashMessage());
+        assertContains("You logged into a secure area!", app.secureAreaPage().getFlashMessage());
     }
 }
