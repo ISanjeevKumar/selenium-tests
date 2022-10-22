@@ -14,12 +14,10 @@ public class ExtentReportManager {
     private ExtentTest _test;
 
     public ExtentReportManager(ExtentReportSettings extentReportSettings) {
-        System.out.println("Path" + extentReportSettings.reportPath);
         _extent = new ExtentReports();
         ExtentSparkReporter spark = new ExtentSparkReporter(extentReportSettings.reportPath);
         _extent.attachReporter(spark);
         spark.config().setTheme(Theme.STANDARD);
-        System.out.println("Title:" + extentReportSettings.reportTitle);
         spark.config().setDocumentTitle(extentReportSettings.reportTitle);
         spark.config().setReportName(extentReportSettings.reportTitle);
     }

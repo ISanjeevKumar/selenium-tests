@@ -13,6 +13,10 @@ public class ExtentLogger {
         _test.pass(message);
     }
 
+    public void info(String message) {
+        _test.info(message);
+    }
+
     public void fail(String message) {
         _test.fail(message);
     }

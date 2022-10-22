@@ -34,10 +34,12 @@ public class TestBase {
     }
 
     public void assertEqual(String expected, String actual) {
+        _extentLogger.info(String.format("assertEqual: expected '%s' against actual '%s'", expected, actual));
         assertThat(expected).isEqualTo(actual);
     }
 
     public void assertContains(String expected, String actual) {
+        _extentLogger.info(String.format("assertContains: expected '%s' against actual '%s'", expected, actual));
         assertThat(actual).contains(expected);
     }
 }
